@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="refresh_success">刷新成功</string>
+    <string name="refresh_finished">刷新完成</string>
+    <string name="refresh_fail">刷新失败</string>
+    <string name="refreshing">加载中</string>
+    <string name="refresh_pull_down">下拉刷新</string>
+    <string name="refresh_release_to">松开刷新</string>
+    <string name="confirm">确认</string>
+    <string name="cancel">取消</string>
+
+    <string name="loading_title">加载中…</string>
+    <string name="web_error">网页无法打开</string>
+
+    <string name="msg_default_format">格式</string>
+    <string name="msg_default_meta">元数据</string>
+    <string name="msg_default_mms_subject">Hi</string>
+    <string name="msg_default_status">请扫码获取图书详情</string>
+    <string name="msg_default_time">时间</string>
+    <string name="msg_default_type">类型</string>
+    <string name="msg_encode_contents_failed">无法生成条码。</string>
+    <string name="msg_error">错误</string>
+    <string name="msg_camera_framework_bug">很遗憾，Android 相机出现问题。你可能需要重启设备。</string>
+</resources>

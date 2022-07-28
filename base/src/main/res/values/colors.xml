@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#007AFF</color>
+    <color name="colorPrimaryDark">#007AFF</color>
+    <color name="colorAccent">#007AFF</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="red">#FF0000</color>
+    <color name="line">#CBCBCB</color>
+    <color name="line_2">#4D09141F</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="C_F9F9F9">#F9F9F9</color>
+    <color name="C_666666">#666666</color>
+    <color name="C_ECECEC">#ECECEC</color>
+    <color name="C_999999">#999999</color>
+
+    <color name="contents_text">#ff000000</color>
+    <color name="encode_view">#ffffffff</color>
+    <color name="possible_result_points">#c0ffbd21</color> <!-- Android standard ICS color -->
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c099cc00</color> <!-- Android standard ICS color -->
+    <color name="result_text">#ffffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="status_text">#ffffffff</color>
+    <color name="viewfinder_laser">#ffcc0000</color> <!-- Android standard ICS color -->
+    <color name="viewfinder_mask">#60000000</color>
+</resources>

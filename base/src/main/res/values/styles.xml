@@ -1,0 +1,68 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="HorizontalLineStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/line</item>
+    </style>
+
+    <style name="translucent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground" >@color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <declare-styleable name="GuideDotView">
+        <attr name="count" format="integer"/>
+        <attr name="selected_color" format="color"/>
+        <attr name="default_color" format="color"/>
+        <attr name="dot_margin" format="dimension"/>
+        <attr name="dot_width" format="dimension"/>
+        <attr name="dot_height" format="dimension"/>
+        <attr name="dot_radius" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="RatingView">
+        <!-- 间距 -->
+        <attr format="dimension" name="distance"/>
+        <!-- 大小 -->
+        <attr format="dimension" name="rating_width"/>
+        <attr format="dimension" name="rating_height"/>
+        <attr format="dimension" name="rating_padding_left"/>
+        <attr format="dimension" name="rating_padding_right"/>
+        <attr format="dimension" name="rating_padding_top"/>
+        <attr format="dimension" name="rating_padding_bottom"/>
+        <!-- 个数 -->
+        <attr format="integer" name="rating_sum"/>
+        <!-- 空图 -->
+        <attr format="reference" name="rating_un_star_img"/>
+        <!-- 半图 -->
+        <attr format="reference" name="rating_half_star_img"/>
+        <!-- 满图 -->
+        <attr format="reference" name="rating_star_img"/>
+        <!-- 是否支持半图 -->
+        <attr format="boolean" name="rating_support_half"/>
+        <!-- 总评分 -->
+        <attr format="integer" name="rating_total_score"/>
+    </declare-styleable>
+
+    <style name="ResultButton" parent="@android:style/Widget.Holo.Button.Borderless.Small">
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="ShareButton" parent="@android:style/Widget.Holo.Button.Borderless.Small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="dialog_animation_empty" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@null</item>
+        <item name="android:windowExitAnimation">@null</item>
+    </style>
+</resources>
