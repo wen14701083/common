@@ -1,0 +1,90 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="HorizontalLineStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/line</item>
+    </style>
+
+    <style name="translucent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <declare-styleable name="GuideDotView">
+        <attr name="count" format="integer" />
+        <attr name="selected_color" format="color" />
+        <attr name="default_color" format="color" />
+        <attr name="dot_margin" format="dimension" />
+        <attr name="dot_width" format="dimension" />
+        <attr name="dot_height" format="dimension" />
+        <attr name="dot_radius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="RatingView">
+        <!-- 间距 -->
+        <attr name="distance" format="dimension" />
+        <!-- 大小 -->
+        <attr name="rating_width" format="dimension" />
+        <attr name="rating_height" format="dimension" />
+        <attr name="rating_padding_left" format="dimension" />
+        <attr name="rating_padding_right" format="dimension" />
+        <attr name="rating_padding_top" format="dimension" />
+        <attr name="rating_padding_bottom" format="dimension" />
+        <!-- 个数 -->
+        <attr name="rating_sum" format="integer" />
+        <!-- 空图 -->
+        <attr name="rating_un_star_img" format="reference" />
+        <!-- 半图 -->
+        <attr name="rating_half_star_img" format="reference" />
+        <!-- 满图 -->
+        <attr name="rating_star_img" format="reference" />
+        <!-- 是否支持半图 -->
+        <attr name="rating_support_half" format="boolean" />
+        <!-- 总评分 -->
+        <attr name="rating_total_score" format="integer" />
+    </declare-styleable>
+
+    <style name="dialog_animation_empty" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@null</item>
+        <item name="android:windowExitAnimation">@null</item>
+    </style>
+
+    <!-- 对话框默认主题 -->
+    <style name="BaseDialogTheme" parent="Theme.AppCompat.DayNight.Dialog.Alert"><!-- @android:style/Theme.Dialog -->
+        <!-- 无边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 浮在 Activity 之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@color/transparent</item>
+        <!-- 遮盖层 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- Base.Theme.AppCompat.Light.Dialog.Alert 特有的属性，用于指定默认宽度，这里需要禁用 -->
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+        <!-- 解决 ActionBar 占位导致 Dialog 无法全屏显示的问题 -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!-- ActionMode 覆盖 Actionbar，不顶下来 -->
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- 不感知敏感的切换 -->
+        <!--<item name="android:configChanges">orientation|screenSize|keyboardHidden</item>-->
+        <!-- 默认隐藏输入法 -->
+        <!--<item name="android:windowSoftInputMode">stateHidden</item>-->
+        <!-- Dialog 全屏显示 -->
+        <!--<item name="android:windowFullscreen">true</item>-->
+    </style>
+</resources>

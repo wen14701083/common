@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xhd.android.widget.RoundLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_dialog_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:orientation="vertical"
+    app:rv_cornerRadius="@dimen/dp_6"
+    app:rv_backgroundColor="@color/white">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#333"
+        android:text="提示"/>
+
+    <View android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@color/line"/>
+
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/dp_95"
+        android:layout_marginLeft="@dimen/dp_40"
+        android:layout_marginRight="@dimen/dp_40"
+        android:lineSpacingExtra="5dp"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:textColor="#666666"
+        tools:text="是否退出登录"/>
+
+    <View android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@color/line"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_42"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#999999"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="取消"/>
+
+        <View
+            android:layout_width="0.3dp"
+            android:layout_height="match_parent"
+            android:background="#EEEEEE"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tv_define"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#4476F1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="确定" />
+    </LinearLayout>
+</com.xhd.android.widget.RoundLinearLayout>
