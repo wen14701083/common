@@ -1,7 +1,6 @@
 package com.xhd.android.utils
 
 import android.util.Log
-import com.xhd.android.BuildConfig
 
 /**
  * Content:
@@ -10,6 +9,11 @@ import com.xhd.android.BuildConfig
 object LogUtils {
 
     private const val TAG = "+DEBUG+"
+    var debug = false
+
+    fun enable(enable: Boolean) {
+        debug = enable
+    }
 
     private fun generateTag(): String {
         Thread.currentThread().stackTrace.find {
@@ -23,34 +27,26 @@ object LogUtils {
     }
 
     fun d(msg: String) {
-        if (BuildConfig.DEBUG) {
+        if (debug) {
             Log.d(generateTag(), msg)
         }
     }
 
     fun i(msg: String) {
-        if (BuildConfig.DEBUG) {
+        if (debug) {
             Log.i(generateTag(), msg)
         }
     }
 
     fun w(msg: String) {
-        if (BuildConfig.DEBUG) {
+        if (debug) {
             Log.w(generateTag(), msg)
         }
     }
 
     fun e(msg: String) {
-        if (BuildConfig.DEBUG) {
+        if (debug) {
             Log.e(generateTag(), msg)
         }
     }
-}
-
-fun String.logE() {
-    LogUtils.e(this)
-}
-
-fun String.logD() {
-    LogUtils.d(this)
 }

@@ -1,19 +1,24 @@
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven-publish'
+apply plugin: 'org.jetbrains.dokka'
 
 android {
     compileSdkVersion 31
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 31
         targetSdkVersion 31
         versionCode 1
-        versionName "1.0"
+        versionName '0.0.12'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+        buildConfigField('String', 'BUILD_TIME', getBuildTime())
     }
 
     buildTypes {
@@ -31,6 +36,13 @@ android {
     lintOptions {
         abortOnError false
     }
+}
+
+private static String getBuildTime() {
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+    LocalDateTime now = LocalDateTime.now()
+    String dateTime = dtf.format(now)
+    return "\"${dateTime}\""
 }
 
 dependencies {
@@ -66,7 +78,7 @@ dependencies {
     api 'io.github.scwang90:refresh-header-classics:2.0.5'
     //banner图
     api 'com.youth.banner:banner:2.1.0'
-    // 状态栏沉浸：https://github.com/gyf-dev/ImmersionBar
+    // 状态栏沉浸：https://github.com/gyf-dev/ImmersionBarx
     api 'com.geyifeng.immersionbar:immersionbar:3.2.2'
     api 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.2'
     // 标题栏框架：https://github.com/getActivity/TitleBar
@@ -82,23 +94,21 @@ dependencies {
     api 'org.greenrobot:eventbus:3.2.0'
 }
 
-//将源码打包  为了保证引入的aar  包可以查看源码
+// 打包源码jar
 task androidSourcesJar(type: Jar) {
-    classifier = 'sources'
-    from android.sourceSets.main.java.srcDirs
+    from android.sourceSets.main.java.getSrcDirs()
+    archiveClassifier = 'sources'
 }
-//包含文档和源码的aar
-artifacts {
-    archives androidSourcesJar
-}
+
 
 publishing {
     publications {
         aar(MavenPublication) {
+            artifact androidSourcesJar
             afterEvaluate { artifact(tasks.getByName("bundleReleaseAar")) }
             groupId = 'cn.xhd.common.android'
             artifactId = 'base'
-            version = '0.0.3'
+            version = '0.0.12'
 
             pom.withXml {
                 def dependenciesNode = asNode().appendNode('dependencies')

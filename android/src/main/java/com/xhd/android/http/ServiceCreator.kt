@@ -1,6 +1,7 @@
 package com.xhd.android.http
 
 import com.xhd.android.BuildConfig
+import com.xhd.android.utils.LogUtils
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -32,7 +33,7 @@ abstract class ServiceCreator() {
             .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
             .addInterceptor(
                 // 添加日志拦截器
-                if (BuildConfig.DEBUG) {
+                if (LogUtils.debug) {
                     loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
                 } else {
                     loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE)

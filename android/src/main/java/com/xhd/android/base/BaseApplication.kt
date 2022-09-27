@@ -8,7 +8,9 @@ import android.os.Bundle
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import com.xhd.android.BuildConfig
 import com.xhd.android.utils.ActivityManager
+import com.xhd.android.utils.LogUtils
 
 /**
  * Create by wk on 2021/6/29
@@ -35,6 +37,7 @@ open class BaseApplication : Application(), Application.ActivityLifecycleCallbac
         super.onCreate()
         context = applicationContext
         registerActivityLifecycleCallbacks(this)
+        LogUtils.d("${BuildConfig.BUILD_TYPE}${BuildConfig.BUILD_TIME}")
     }
 
     override fun onActivityPaused(activity: Activity) {
