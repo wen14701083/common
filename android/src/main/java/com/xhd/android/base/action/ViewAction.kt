@@ -13,6 +13,7 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.xhd.android.R
 import com.xhd.android.base.BaseListViewModel
 import com.xhd.android.base.BaseViewModel
+import com.xhd.android.base.Global
 import com.xhd.android.bean.LoadingState
 import com.xhd.android.bean.ResultListBean
 import com.xhd.android.dialog.BaseDialog
@@ -45,7 +46,7 @@ interface ViewAction {
      */
     private fun showLoading() {
         val mLoadingDialog = getLoadingDialog()
-        if (!mLoadingDialog.isShowing()) {
+        if (!mLoadingDialog.isShowing) {
             mLoadingDialog.show()
         }
     }
@@ -55,7 +56,7 @@ interface ViewAction {
      */
     private fun stopLoading() {
         val mLoadingDialog = getLoadingDialog()
-        if (mLoadingDialog.isShowing()) {
+        if (mLoadingDialog.isShowing) {
             mLoadingDialog.dismiss()
         }
     }
@@ -98,6 +99,7 @@ interface ViewAction {
             } else {
                 error()
             }
+            finishRefreshOrLoad()
         }
     }
 
@@ -109,8 +111,8 @@ interface ViewAction {
     fun <T> addListObserver(
         adapter: BaseQuickAdapter<T, *>,
         liveData: LiveData<Result<ResultListBean<T>>>,
-        desc: String = "暂无数据",
-        @DrawableRes scr: Int = R.drawable.icon_empty_default,
+        desc: String = Global.mEmptyDesc,
+        @DrawableRes scr: Int = Global.mEmptyIcon,
         block: (T) -> Unit = {}
     ) {
         liveData.observe(getLifecycleOwner()) {
@@ -121,6 +123,7 @@ interface ViewAction {
             } else {
                 setListOrEmpty(adapter, it.getOrNull()?.data, desc, scr)
             }
+            finishRefreshOrLoad()
         }
     }
 
@@ -130,8 +133,8 @@ interface ViewAction {
     fun <T> setData(
         adapter: BaseQuickAdapter<T, *>,
         list: MutableList<T>?,
-        desc: String = "暂无数据",
-        @DrawableRes src: Int = R.drawable.icon_empty_default,
+        desc: String = Global.mEmptyDesc,
+        @DrawableRes src: Int = Global.mEmptyIcon,
         showEmpty: Boolean = true
     ) {
         val viewModel = getViewModel()
@@ -178,19 +181,19 @@ interface ViewAction {
      * list为空时显示空页面
      */
     @SuppressLint("InflateParams", "NotifyDataSetChanged")
-    fun <T> setListOrEmpty(
+    private fun <T> setListOrEmpty(
         adapter: BaseQuickAdapter<T, *>,
         list: MutableList<T>?,
-        desc: String = "暂无数据",
-        @DrawableRes src: Int = R.drawable.icon_empty_default
+        desc: String,
+        @DrawableRes src: Int
     ) {
         if (list != null && list.isNotEmpty()) {
             adapter.setList(list)
         } else {
-            val emptyView = LayoutInflater.from(getContext()).inflate(R.layout.empty_list, null)
+            val emptyView = LayoutInflater.from(getContext()).inflate(Global.mEmptyView, null)
             emptyView?.let {
-                it.findViewById<TextView>(R.id.tv_empty).text = desc
-                it.findViewById<ImageView>(R.id.iv_empty).setImageResource(src)
+                it.findViewById<TextView>(R.id.tv_empty)?.text = desc
+                it.findViewById<ImageView>(R.id.iv_empty)?.setImageResource(src)
                 adapter.data.clear()
                 adapter.setEmptyView(it)
                 adapter.notifyDataSetChanged()

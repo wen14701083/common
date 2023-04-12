@@ -1,7 +1,7 @@
 Kotlin + MVVM
 
 1、导入依赖
-implementation 'cn.xhd.common.android:base:0.0.3'
+implementation 'cn.xhd.common.android:base:0.0.12'
 
 2、maven依赖
 maven { url 'https://jitpack.io' }
@@ -15,3 +15,8 @@ mavenCentral()
 
 3、gradle.properties
 android.enableJetifier=true
+
+4、继承BaseApplication
+LogUtils.enable(BuildConfig.DEBUG)
+
+

@@ -77,8 +77,8 @@ abstract class BaseListActivity<VM : BaseListViewModel, T : Any> : BaseActivity<
      */
     fun setData(
         list: MutableList<T>?,
-        desc: String = "暂无数据",
-        @DrawableRes src: Int = R.drawable.icon_empty_default,
+        desc: String = Global.mEmptyDesc,
+        @DrawableRes src: Int = Global.mEmptyIcon,
         showEmpty: Boolean = true
     ) {
         super.setData(this.mAdapter, list, desc, src, showEmpty)

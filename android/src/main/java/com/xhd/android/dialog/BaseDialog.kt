@@ -11,8 +11,11 @@ import android.widget.FrameLayout
 import androidx.annotation.LayoutRes
 import androidx.annotation.StyleRes
 import androidx.appcompat.app.AppCompatDialog
+import androidx.core.view.setPadding
 import com.xhd.android.R
 import com.xhd.android.base.action.ActivityAction
+import com.xhd.android.utils.LogUtils
+import com.xhd.android.utils.ResourcesUtils
 
 /**
  * @date created on 2022/9/21
@@ -60,7 +63,12 @@ open class BaseDialog constructor(
         window?.setGravity(gravity)
     }
 
+    open fun setPadding(left: Int, top: Int, right: Int, bottom: Int) {
+        window?.decorView?.setPadding(left, top, right, bottom)
+    }
+
     override fun dismiss() {
+        LogUtils.e("dismiss")
         super.dismiss()
     }
 
@@ -90,6 +98,11 @@ open class BaseDialog constructor(
         /** 背景遮盖层透明度 */
         private var backgroundDimAmount: Float = 0.5f
 
+        private var startPadding = 0
+        private var endPadding = 0
+        private var topPadding = 0
+        private var bottomPadding = 0
+
         /**
          * 设置布局
          */
@@ -103,7 +116,7 @@ open class BaseDialog constructor(
         open fun setContentView(view: View?): B {
             // 请不要传入空的布局
             if (view == null) {
-                throw IllegalArgumentException("are you ok?")
+                throw IllegalArgumentException("dialog view is null")
             }
             contentView = view
             if (isCreated()) {
@@ -166,6 +179,22 @@ open class BaseDialog constructor(
             return this as B
         }
 
+        open fun setPadding(left: Int, top: Int, right: Int, bottom: Int): B {
+            this.startPadding = left
+            this.topPadding = top
+            this.endPadding = right
+            this.bottomPadding = bottom
+            if (isCreated()) {
+                dialog?.setPadding(
+                    ResourcesUtils.dp2px(left.toFloat()),
+                    ResourcesUtils.dp2px(top.toFloat()),
+                    ResourcesUtils.dp2px(right.toFloat()),
+                    ResourcesUtils.dp2px(bottom.toFloat())
+                )
+            }
+            return this as B
+        }
+
         /**
          * 是否可以通过点击空白区域取消
          */
@@ -210,6 +239,10 @@ open class BaseDialog constructor(
                         window.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
                     }
                     window.attributes = params
+
+                    if (width == ViewGroup.LayoutParams.MATCH_PARENT) {
+                        setPadding(startPadding, topPadding, endPadding, bottomPadding)
+                    }
                 }
             }
             return dialog!!
@@ -270,9 +303,5 @@ open class BaseDialog constructor(
         open fun getDialog(): BaseDialog? {
             return dialog
         }
-    }
-
-    interface OnClickListener {
-        fun onClick(dialog: BaseDialog?)
     }
 }

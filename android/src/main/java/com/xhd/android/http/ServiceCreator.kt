@@ -1,6 +1,5 @@
 package com.xhd.android.http
 
-import com.xhd.android.BuildConfig
 import com.xhd.android.utils.LogUtils
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

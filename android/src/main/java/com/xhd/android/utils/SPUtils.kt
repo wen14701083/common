@@ -8,7 +8,7 @@ import com.xhd.android.base.BaseApplication
 /**
  * Create by wk on 2021/7/8
  */
-object SpUtils {
+object SPUtils {
 
     private fun getSharedPreferences(): SharedPreferences {
         return BaseApplication.context.getSharedPreferences("", Context.MODE_PRIVATE)

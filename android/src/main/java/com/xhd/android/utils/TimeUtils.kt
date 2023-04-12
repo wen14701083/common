@@ -14,11 +14,9 @@ object TimeUtils {
     const val DAY = 24 * HOUR
 
     const val FORMAT_DEFAULT = "yyyy-MM-dd HH:mm:ss"
-    const val FORMAT_DEFAULT_2 = "yyyy-MM-dd 'T' HH:mm:ss"
     const val FORMAT_YMD = "yyyy-MM-dd"
+    const val FORMAT_YMD_CN = "yyyy年MM月dd日"
     const val FORMAT_HMS = "HH:mm:ss"
-    const val FORMAT_MS = "mm:ss"
-    const val FORMAT_YM = "yyyy年MM月"
     fun formatTime(time: Long, rule: String): String? {
         val date = Date(time)
         val format = SimpleDateFormat(rule, Locale.getDefault())

@@ -1,7 +1,6 @@
 package com.xhd.android.dialog
 
 import android.content.Context
-import android.view.Gravity
 import androidx.annotation.StringRes
 import com.xhd.android.R
 import com.xhd.android.utils.ResourcesUtils
@@ -16,7 +15,6 @@ class DefaultDialog {
     class Builder(context: Context) : BaseDialog.Builder<Builder>(context) {
         init {
             setContentView(R.layout.dialog_default)
-            setGravity(Gravity.TOP)
 
             contentView?.apply {
                 btn_cancel.setOnDoubleClickListener {
@@ -49,15 +47,15 @@ class DefaultDialog {
             contentView?.tv_define?.text = define
         }
 
-        fun setCancelClickListener(listener: BaseDialog.OnClickListener?) = apply {
+        fun setCancelClickListener(onClick: (dialog: BaseDialog?) -> Unit) = apply {
             contentView?.btn_cancel?.setOnDoubleClickListener {
-                listener?.onClick(getDialog())
+                onClick(getDialog())
             }
         }
 
-        fun setDefineClickListener(listener: BaseDialog.OnClickListener?) = apply {
+        fun setDefineClickListener(onClick: (dialog: BaseDialog?) -> Unit) = apply {
             contentView?.tv_define?.setOnDoubleClickListener {
-                listener?.onClick(getDialog())
+                onClick(getDialog())
             }
         }
     }

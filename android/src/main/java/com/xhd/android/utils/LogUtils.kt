@@ -9,7 +9,7 @@ import android.util.Log
 object LogUtils {
 
     private const val TAG = "+DEBUG+"
-    var debug = false
+    var debug = true
 
     fun enable(enable: Boolean) {
         debug = enable

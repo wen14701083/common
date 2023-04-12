@@ -24,13 +24,6 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), ViewAction {
 
     lateinit var mContext: Context
 
-    companion object {
-
-        fun addNewTaskFlag(intent: Intent): Intent {
-            return intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        }
-    }
-
     private val mLoadingDialog: BaseDialog by lazy {
         createDialogLoading()
     }

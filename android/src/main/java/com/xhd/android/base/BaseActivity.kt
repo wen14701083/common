@@ -1,8 +1,6 @@
 package com.xhd.android.base
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
 import android.view.Window
@@ -124,11 +122,22 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), ViewActio
      */
     abstract fun loadData()
 
-    open fun initStatusBar() { // 深色状态栏文字
+    /**
+     * isDark 状态栏文字-是否黑色
+     */
+    open fun initStatusBar(isDark: Boolean = true) {
         immersionBar {
             fitsSystemWindows(true)
             statusBarDarkFont(true)
-            statusBarColor(R.color.C_F9F9F9)
+            statusBarColor(R.color.red)
+        }
+    }
+
+    fun setFullStatusBar(isDark: Boolean = false) {
+        immersionBar {
+            fitsSystemWindows(false)
+            statusBarDarkFont(isDark)
+            statusBarColor(R.color.transparent)
         }
     }
 

@@ -14,7 +14,10 @@ object KeyboardUtils {
     fun showKeyboard(context: Context, editText: EditText) {
         val service = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         service.showSoftInput(editText, InputMethodManager.RESULT_SHOWN)
-        service.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
+        service.toggleSoftInput(
+            InputMethodManager.SHOW_FORCED,
+            InputMethodManager.HIDE_IMPLICIT_ONLY
+        )
     }
 
     fun hintKeyboard(context: Context, editText: EditText) {
@@ -26,7 +29,8 @@ object KeyboardUtils {
      * 隐藏键盘.
      */
     fun hideSoftInput(activity: FragmentActivity) {
-        val imm = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager ?: return
+        val imm =
+            activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager ?: return
         var view = activity.currentFocus
         if (view == null) {
             view = View(activity)
@@ -39,7 +43,8 @@ object KeyboardUtils {
      *
      */
     fun showSoftInput(activity: Activity) {
-        val imm = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager ?: return
+        val imm =
+            activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager ?: return
         var view = activity.currentFocus
         if (view == null) {
             view = View(activity)
