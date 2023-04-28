@@ -3,6 +3,7 @@ package com.xhd.android.dialog
 import android.content.Context
 import androidx.annotation.StringRes
 import com.xhd.android.R
+import com.xhd.android.utils.LogUtils
 import com.xhd.android.utils.ResourcesUtils
 import com.xhd.android.utils.setOnDoubleClickListener
 import kotlinx.android.synthetic.main.dialog_default.view.*
@@ -12,15 +13,20 @@ import kotlinx.android.synthetic.main.dialog_default.view.*
  */
 class DefaultDialog {
 
-    class Builder(context: Context) : BaseDialog.Builder<Builder>(context) {
+    open class Builder(context: Context) : BaseDialog.Builder<Builder>(context) {
         init {
-            setContentView(R.layout.dialog_default)
+            LogUtils.e("DefaultDialog init")
+            setContentView(getContentView())
 
             contentView?.apply {
                 btn_cancel.setOnDoubleClickListener {
                     dismiss()
                 }
             }
+        }
+
+        open fun getContentView(): Int {
+            return R.layout.dialog_default
         }
 
         fun setTitle(@StringRes resId: Int) = setTitle(ResourcesUtils.getString(resId))
